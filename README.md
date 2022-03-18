@@ -1,3 +1,7 @@
+# 🪙 Vesting Vault DAPP
+
+This is the integration of [VestingVault](https://github.com/menezesphill/vestingVault) to a Decetralized Webb App (dApp) using `web3.js` and `MetaMask`.  
+
 # 🚀 Quick Start
 
 📄 Clone or fork `vestingVault-dapp`:
