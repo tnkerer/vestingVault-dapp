@@ -1,0 +1,121 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>VestingVault Dapp by taurinos.eth</title>
+  <link rel="icon" type="image/png" href="taurinos.ico">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="index.css" type="text/css">
+</head>
+
+<body>
+  <main class="container-fluid">
+    <!-- <header>
+      <h1 class="text-center">E2E Test Dapp</h1>
+    </header> -->
+
+    <!-- Part 1 Setting up Basic Actions and Status-->
+    <section>
+      <!-- <h3 class="card-title">Status</h3> -->
+      <div class="row">
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+          <p class="info-text alert alert-primary">Network: <span id="network"></span></p>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+          <p class="info-text alert alert-secondary">ChainId: <span id="chainId"></span></p>
+          <p class="info-text alert alert-secondary">dApp Status: <span id="contractStatus">Idle</span></p>
+
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+          <button class="btn btn-primary btn-lg btn-block mb-3" id="connectButton" disabled></button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- <section>
+      <div class="row d-flex justify-content-center">
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Basic Actions</h4>
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="connectButton" disabled></button>
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="getAccounts">eth_accounts</button>
+              <p class="info-text alert alert-secondary">eth_accounts result: <span id="getAccountsResult"></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <!-- /Part 1 -->
+
+    <section>
+      <!-- Part 2 Contract-->
+      <div class="row">
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
+          <div class="card full-width">
+            <div class="card-body">
+              <h4 class="card-title h4-align">(Owner Side) Deploy New VestingVault:</h4>
+              <p class="info-text alert alert-success">Test Token: <span id="tokenAddress"></span></p>
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="createToken">Create Token</button>
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="deployButton" disabled>Deploy using TEST TOKEN</button>
+              <h4 class="card-or h4-align">Or use a different token:</h4>
+              <input type="text" class="info-text full-width mb-3" id="deployedTokenAddress"></input>
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="deployUsingInput">Deploy using Token above</button>
+              <h4 class="card-title h4-align">Use Existing VestingVault:</h4>
+              <input type="text" class="info-text full-width mb-3" id="exisitngVaultAddress"></input>
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="loadVault">Load VestingVault from Address</button>
+            </div>
+          </div>
+        </div>
+        <!-- /Part 2 -->
+
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
+          <div class="card full-width">
+            <div class="card-body">
+              <h4 class="card-title h4-align">(Owner Side) Manage Grants:</h4>
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="approve" disabled>Approve VestingVault</button>
+              <p class="info-text alert alert-secondary">
+                Grant Amount: 
+                <input type="text" class="info-text full-width mb-3" id="setGrantAmount"></input>
+                Grantee Address:
+                <input type="text" class="info-text full-width mb-3" id="setGrantAddress"></input>
+                Days Vested:
+                <input type="text" class="info-text full-width mb-3" id="setDays"></input>
+              </p>
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="createNewGrant" disabled>Create Grant</button>
+              <p class="info-text alert alert-secondary">Grantee Address: 
+                <input type="text" class="info-text full-width mb-3" id="granteeAddress"></input>
+              </p>
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="revokeGrant" disabled>Revoke Grant</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
+          <div class="card full-width">
+            <div class="card-body">
+              <h4 class="card-title h4-align">(User Side) Claim Vested Grant:</h4>
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="fetchGrant" disabled>Fetch My Grant</button>
+              <p class="info-text alert alert-secondary">
+                Locked Grant: <span id="lockedGrant"></span><br>
+                Unlocked Grant: <span id="unlockedGrant"></span><br>
+                Already Claimed: <span id="alreadyClaimed"></span><br>
+              </p>
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="claimGrant" disabled>Claim My Grant</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="./metamask-onboarding.bundle.js"></script>
+  <script type="module" src="bundle.js" defer></script>
+</body>
+
+</html>

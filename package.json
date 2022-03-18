@@ -1,0 +1,33 @@
+{
+  "name": "vesting-vault",
+  "version": "1.0.0",
+  "description": "dApp to deploy and interact with VestingVault on an EVM compatible network",
+  "scripts": {
+    "lint": "eslint . --ext js,json && prettier ./src -c",
+    "lint:fix": "eslint . --fix --ext js,json && prettier ./src -c --write",
+    "test": "yarn lint",
+    "serve": "static-server ./src --port 9011",
+    "dist": "static-server ./dist --port 9011",
+    "build": "parcel build src/index.html"
+  },
+  "author": "menezesphill",
+  "license": "MIT",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^10.2.4",
+    "eslint": "^8.11.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.0",
+    "static-server": "^2.2.1",
+    "web3": "^1.7.1",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "dependencies": {
+    "@metamask/onboarding": "^1.0.0",
+    "parcel": "^2.3.2"
+  }
+}
