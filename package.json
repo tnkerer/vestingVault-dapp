@@ -8,7 +8,7 @@
     "test": "yarn lint",
     "serve": "static-server ./src --port 9011",
     "dist": "static-server ./dist --port 9011",
-    "build": "parcel build src/index.html"
+    "build": "browserify ./src/contract.js -o ./src/bundle.js && parcel build src/index.html"
   },
   "author": "menezesphill",
   "license": "MIT",
@@ -28,6 +28,8 @@
   },
   "dependencies": {
     "@metamask/onboarding": "^1.0.0",
-    "parcel": "^2.3.2"
+    "browserify": "^17.0.0",
+    "parcel": "^2.3.2",
+    "yarn": "^1.22.18"
   }
 }
