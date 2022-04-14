@@ -6,8 +6,7 @@
     "lint": "eslint . --ext js,json && prettier ./src -c",
     "lint:fix": "eslint . --fix --ext js,json && prettier ./src -c --write",
     "test": "yarn lint",
-    "serve": "static-server ./src --port 9011",
-    "dist": "static-server ./dist --port 9011",
+    "serve": "browserify ./src/contract.js -o ./src/bundle.js && static-server ./src --port 9011",
     "build": "browserify ./src/contract.js -o ./src/bundle.js && parcel build src/index.html"
   },
   "author": "menezesphill",
